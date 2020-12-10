@@ -4,6 +4,8 @@ import Logo from './components/Logo/index';
 import { Detail } from './pages/Detail';
 import { Home } from './pages/Home';
 import { Router } from '@reach/router';
+import { NavBar } from './components/NavBar/index';
+
 
 const App = () => {
 
@@ -16,7 +18,7 @@ const App = () => {
         <Home path='/pet/:id' />
         <Detail path='/detail/:detailId' />
       </Router>
-
+      <NavBar />
 
     </>
   )

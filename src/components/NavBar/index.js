@@ -1,11 +1,14 @@
 import React from 'react';
+import { Nav, Link } from './styles';
+import { MdHome, MdFavoriteBorder, MdPersonOutline } from 'react-icons/md';
+
 
 export const NavBar = () => {
   return (
-    <nav>
-      <button>Home</button>
-      <button>Favs</button>
-      <button>User</button>
-    </nav>
+    <Nav>
+      <Link to="/"><MdHome size="25px" /></Link>
+      <Link to="/favs"><MdFavoriteBorder size="25px" /></Link>
+      <Link to="/user"><MdPersonOutline size="25px" /></Link>
+    </Nav>
   )
 }
