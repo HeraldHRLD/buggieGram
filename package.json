@@ -1,26 +1,25 @@
 {
-  "name": "curso-platzi-react-avanzado",
+  "name": "BuggieGram",
   "version": "1.0.0",
-  "description": "¡Sígueme en Youtube! https://www.youtube.com/midudev",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack",
     "lint": "standard",
     "lint-fix": "standard --fix",
-    "start": "webpack serve --mode development"
+    "start": "webpack serve --mode development --history-api-fallback"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/midudev/curso-platzi-react-avanzado.git"
+    "url": "git+https://github.com/HeraldHRLD/buggieGram.git"
   },
   "keywords": [],
   "author": "Gabriel Rodriguez <g.federico.rodriguez@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/midudev/curso-platzi-react-avanzado/issues"
+    "url": "https://github.com/HeraldHRLD/buggieGram/issues"
   },
-  "homepage": "https://github.com/midudev/curso-platzi-react-avanzado#readme",
+  "homepage": "https://github.com/HeraldHRLD/buggieGram",
   "devDependencies": {
     "@babel/core": "^7.12.9",
     "@babel/preset-env": "^7.12.7",
@@ -37,6 +36,7 @@
   },
   "dependencies": {
     "@apollo/client": "^3.3.4",
+    "@reach/router": "^1.3.4",
     "apollo-boost": "^0.4.9",
     "graphql": "^15.4.0",
     "intersection-observer": "^0.11.0",
