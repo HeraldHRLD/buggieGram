@@ -6,7 +6,16 @@ import Context from './Context';
 import App from './App';
 
 const client = new ApolloClient({
-  uri: 'https://petgram-server-gabi-78oz59b5v.vercel.app/graphql'
+  uri: 'https://petgram-server-gabi-78oz59b5v.vercel.app/graphql',
+  request: operation => {
+    const token = window.sessionStorage.getItem('token')
+    const authorization = token ? `Bearer ${token}` : ''
+    operation.setContext(
+      {
+        headers: { authorization }
+      }
+    )
+  }
 })
 ReactDOM.render(
   <Context.Provider >
@@ -14,4 +23,4 @@ ReactDOM.render(
       <App />
     </ApolloProvider>
   </Context.Provider>,
-   document.getElementById('app'));
+  document.getElementById('app'));
