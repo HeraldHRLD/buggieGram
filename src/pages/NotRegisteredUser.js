@@ -1,38 +1,42 @@
-import React from 'react';
-import Context from '../Context';
+import React, { useContext } from 'react';
+import { Link, useNavigate } from '@reach/router'
+import { Context } from '../Context';
 import { UserForm } from '../components/UserForm/index';
 import { RegisterMutation } from '../container/RegisterMutation';
 import { LoginMutation } from '../container/LoginMutation';
 
 export const NotRegisteredUser = () => {
+  const { activateAuth } = useContext(Context)
   return (
-    <Context.Consumer>
-      {
-        ({ activateAuth }) => {
-          return (
-            <>
-              <RegisterMutation>
-                {
-                  (register, { data, loading, error }) => {
-                    const onSubmit = ({ email, password }) => {
-                      const input = { email, password }
-                      const variables = { input }
-                      register({ variables }).then(activateAuth)
-                    }
-                    const errorMsg = error && 'El usuario ya existe.'
 
-                    return (
-                      <UserForm
-                        disabled={loading}
-                        error={errorMsg}
-                        title={'Registrate'}
-                        onSubmit={onSubmit}
-                      />
-                    )
-                  }
-                }
-              </RegisterMutation>
-              <LoginMutation>
+    <>
+      <RegisterMutation>
+        {
+          (register, { data, loading, error }) => {
+            const navigate = useNavigate();
+            const onSubmit = ({ email, password }) => {
+              const input = { email, password }
+              const variables = { input }
+              register({ variables }).then(({ data }) => {
+                const { signup } = data
+                activateAuth(signup)
+              })
+              navigate('/home', { replace: true })
+            }
+            const errorMsg = error && 'El usuario ya existe.'
+
+            return (
+              <UserForm
+                disabled={loading}
+                error={errorMsg}
+                title={'Registrate'}
+                onSubmit={onSubmit}
+              />
+            )
+          }
+        }
+      </RegisterMutation>
+      {/* <LoginMutation>
                 {
                   (login, { data, loading, error }) => {
                     const onSubmit = ({ email, password }) => {
@@ -51,11 +55,8 @@ export const NotRegisteredUser = () => {
                     )
                   }
                 }
-              </LoginMutation>
-            </>
-          )
-        }
-      }
-    </Context.Consumer>
+              </LoginMutation> */}
+      <h2>Ya tienes una cuenta? <Link to='/login'>Inicia sesión aquí</Link></h2>
+    </>
   )
 }

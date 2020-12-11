@@ -9,6 +9,7 @@ import { NavBar } from './components/NavBar/index';
 import { User } from './pages/User'
 import { Favs } from './pages/Favs'
 import { NotRegisteredUser } from './pages/NotRegisteredUser'
+import { LoginUser } from './pages/LoginUser';
 import Context from './Context';
 
 const App = () => {
@@ -18,7 +19,8 @@ const App = () => {
       <GlobalStyle />
       <Logo />
       <Router>
-        <Home path='/' />
+        {/* <Home exact path='/' /> */}
+        <LoginUser path='/' />
         <Home path='/pet/:id' />
         <Detail path='/detail/:detailId' />
       </Router>
@@ -28,14 +30,22 @@ const App = () => {
           ({ isAuth }) =>
             isAuth ?
               <Router>
+                <Home exact path='/home' />
                 <Favs path='/favs' />
                 <User path='/user' />
+
               </Router>
               :
               <Router>
+                <LoginUser path='/home' />
+                <LoginUser path='/login' />
+                <LoginUser path='/favs' />
+                <LoginUser path='/user' />
                 <NotRegisteredUser path='/favs' />
                 <NotRegisteredUser path='/user' />
+                <NotRegisteredUser path='/register' />
               </Router>
+
         }
 
       </Context.Consumer>
