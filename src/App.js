@@ -19,8 +19,7 @@ const App = () => {
       <GlobalStyle />
       <Logo />
       <Router>
-        {/* <Home exact path='/' /> */}
-        <LoginUser path='/' />
+        <Home exact path='/' />
         <Home path='/pet/:id' />
         <Detail path='/detail/:detailId' />
       </Router>
@@ -28,24 +27,15 @@ const App = () => {
       <Context.Consumer>
         {
           ({ isAuth }) =>
-            isAuth ?
-              <Router>
-                <Home exact path='/home' />
-                <Favs path='/favs' />
-                <User path='/user' />
-
-              </Router>
-              :
-              <Router>
-                <LoginUser path='/home' />
-                <LoginUser path='/login' />
-                <LoginUser path='/favs' />
-                <LoginUser path='/user' />
-                <NotRegisteredUser path='/favs' />
-                <NotRegisteredUser path='/user' />
-                <NotRegisteredUser path='/register' />
-              </Router>
-
+            isAuth 
+            ? <Router>
+            <Favs path='/favs' />
+            <User path='/user' />
+          </Router>
+          : <Router>
+            <NotRegisteredUser path='/favs' />
+            <NotRegisteredUser path='/user' />
+          </Router>
         }
 
       </Context.Consumer>

@@ -21,7 +21,7 @@ export const NotRegisteredUser = () => {
                 const { signup } = data
                 activateAuth(signup)
               })
-              navigate('/home', { replace: true })
+              navigate('/', { replace: true })
             }
             const errorMsg = error && 'El usuario ya existe.'
 
@@ -36,7 +36,7 @@ export const NotRegisteredUser = () => {
           }
         }
       </RegisterMutation>
-      {/* <LoginMutation>
+      <LoginMutation>
                 {
                   (login, { data, loading, error }) => {
                     const onSubmit = ({ email, password }) => {
@@ -55,8 +55,8 @@ export const NotRegisteredUser = () => {
                     )
                   }
                 }
-              </LoginMutation> */}
-      <h2>Ya tienes una cuenta? <Link to='/login'>Inicia sesión aquí</Link></h2>
+              </LoginMutation>
+      
     </>
   )
 }

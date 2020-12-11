@@ -21,7 +21,7 @@ export const LoginUser = () => {
                 const { login } = data
                 activateAuth(login)
               })
-              navigate('/home', { replace: true })
+              navigate('/auth/home', { replace: true })
             }
             const errorMsg = error && 'La contraseña o usuario no es correcta'
             return (
