@@ -1,12 +1,15 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import { ListOfCategories } from '../components/ListOfCategories';
 import { ListOfPhotoCards } from '../container/ListOfPhotoCards';
+import { Layout } from '../components/Layout/index';
 
 export const Home = ({ id }) => {
   return (
-    <Fragment>
-      <ListOfCategories />
-      <ListOfPhotoCards categoryId={id} />
-    </Fragment>
+    <>
+      <Layout TitleUp='Home'>
+        <ListOfCategories />
+        <ListOfPhotoCards categoryId={id} />
+      </Layout>
+    </>
   )
 }
